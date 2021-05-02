@@ -5,6 +5,7 @@
 # include <stdlib.h>
 # include <sys/time.h>
 # include <pthread.h>
+# include <sys/time.h>
 
 # include "utils.h"
 # include "validate.h"
@@ -35,10 +36,12 @@ typedef struct	s_philo_state {
 
 typedef struct s_state {
 	t_philo_state		*philo;
-
 	pthread_mutex_t	*forks;
+	int							start_time;
+
+	t_philos_options philo_options;
 }								t_state;
 
-void	init_philos_options(t_philos_options *philos, char **argv);
+void	init(t_state *state, char **argv);
 
 #endif

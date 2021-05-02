@@ -4,11 +4,16 @@
 
 int	main(int argc, char **argv)
 {
-	t_philos_options philos;
+	t_state *state;
 
+	state = (t_state *)malloc(sizeof(t_state));
+	if (!state)
+		return (1);
 	if (validate_arguments(argc, argv))
 		return (1);
-	init_philos_options(&philos, argv);
-	printf("%d\n%d\n%d\n%d\n%d", philos.p_num, philos.time_to_die, philos.time_to_eat, philos.time_to_sleep, philos.times_need_to_eat);
+	init(state, argv);
+	printf("%d\n%d\n%d\n%d\n%d\n", state->philo_options.p_num, state->philo_options.time_to_die, state->philo_options.time_to_eat, state->philo_options.time_to_sleep, state->philo_options.times_need_to_eat);
+	printf("START TIME: %d\n", state->start_time);
+	free(state);
 	return (0);
 }
