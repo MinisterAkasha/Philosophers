@@ -29,10 +29,19 @@ static void	init_forks(pthread_mutex_t **forks, int forks_num, int *error)
 	*forks = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * (forks_num));
 	while (i < forks_num)
 	{
-		if (pthread_mutex_init(*(&forks[i]), NULL) != 0)
+		if (pthread_mutex_init(&((*forks)[i]), NULL) != 0)
 			*error = 1;
 		i++;
 	}
+}
+
+static void init_philosophers(t_philo_state **philo, int philo_num)
+{
+	*philo = (t_philo_state *)malloc(sizeof(t_philo_state) * 1);
+
+	// philo[0]->state = 1;
+	// philo[1]->state = 2;
+	// philo[2]->state = 3;
 }
 
 void	init(t_state *state, char **argv)
@@ -41,4 +50,8 @@ void	init(t_state *state, char **argv)
 	init_philos_options(&state->philo_options, argv);
 	init_start_time(&state->start_time);
 	init_forks(&state->forks, state->philo_options.p_num, &state->error);
+	init_philosophers(&state->philo, state->philo_options.p_num);
+	// pthread_mutex_init(&state->forks[0], NULL);
+	// pthread_mutex_init(&state->forks[1], NULL);
+	// pthread_mutex_init(&state->forks[2], NULL);
 }

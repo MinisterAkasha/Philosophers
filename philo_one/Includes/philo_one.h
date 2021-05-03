@@ -28,11 +28,11 @@ typedef struct s_philos_options {
 	int	time_to_eat;
 	int	time_to_sleep;
 	int	times_need_to_eat;
-}								t_philos_options;
+}				t_philos_options;
 
 typedef struct s_philo_state {
 	int	state;
-}								t_philo_state;
+}				t_philo_state;
 
 typedef struct s_state {
 	int					start_time;
