@@ -5,7 +5,8 @@ INCLUDE = ./Includes
 C_FILES = main.c \
 		validate_arguments.c \
 		utils.c \
-		init.c
+		init.c \
+		free.c
 
 OBJDIR = ./src/obj
 OBJ = $(C_FILES:%.c=%.o)

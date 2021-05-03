@@ -43,6 +43,13 @@ typedef struct s_state {
 	t_philos_options	philo_options;
 }				t_state;
 
-void	init(t_state *state, char **argv);
+void init(t_state *state, char **argv);
+
+/*
+** free
+*/
+
+void free_forks(pthread_mutex_t *forks, int forks_num);
+void free_everything(t_state *state);
 
 #endif
