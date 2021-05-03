@@ -3,8 +3,8 @@
 
 static int	check_for_non_numbers(char **argv)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 1;
 	while (argv[i])
@@ -23,7 +23,7 @@ static int	check_for_non_numbers(char **argv)
 
 int	validate_arguments(int argc, char **argv)
 {
-	int error;
+	int	error;
 
 	error = 0;
 	if (argc > 6 || argc < 5)
@@ -36,6 +36,5 @@ int	validate_arguments(int argc, char **argv)
 		ft_putstr_fd("Error:\nNot valid argument\n", 2);
 		error = 1;
 	}
-	
 	return (error);
 }

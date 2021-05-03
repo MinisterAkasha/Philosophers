@@ -14,17 +14,15 @@ static void	init_philos_options(t_philos_options *philo_options, char **argv)
 
 static void	init_start_time(int *start_time)
 {
-	struct timeval tv;
-	struct timezone tz;
+	struct timeval	tv;
+	struct timezone	tz;
 
 	gettimeofday(&tv, &tz);
 	*start_time = tv.tv_usec;
-	// printf("Секунды: %ld\nМикросекунды: %d", tv.tv_sec, tv.tv_usec);
 }
 
 void	init(t_state *state, char **argv)
 {
 	init_philos_options(&state->philo_options, argv);
-
 	init_start_time(&state->start_time);
 }
