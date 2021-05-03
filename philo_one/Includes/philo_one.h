@@ -31,13 +31,16 @@ typedef struct s_philos_options {
 }				t_philos_options;
 
 typedef struct s_philo_state {
-	int	state;
+	int			state;
+	pthread_t	philo_thread;
 }				t_philo_state;
 
 typedef struct s_state {
 	int					start_time;
 	t_philo_state		*philo;
 	pthread_mutex_t		*forks;
+	pthread_mutex_t		message_mutex;
+	pthread_t			monitoring_pt;
 
 	int					error;
 	t_philos_options	philo_options;
@@ -51,5 +54,10 @@ void init(t_state *state, char **argv);
 
 void free_forks(pthread_mutex_t *forks, int forks_num);
 void free_everything(t_state *state);
+
+/*
+** free
+*/
+void create_threads(t_state *state);
 
 #endif

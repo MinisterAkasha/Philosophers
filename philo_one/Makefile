@@ -6,7 +6,8 @@ C_FILES = main.c \
 		validate_arguments.c \
 		utils.c \
 		init.c \
-		free.c
+		free.c \
+		create_threads.c 
 
 OBJDIR = ./src/obj
 OBJ = $(C_FILES:%.c=%.o)

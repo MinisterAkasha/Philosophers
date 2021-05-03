@@ -1,21 +1,8 @@
 #include "philo_one.h"
 
-// void* plus(void *args)
-// {
-// 	t_state *state;
-
-// 	state = (t_state*) args;
-// 	pthread_mutex_lock(&state->forks[0]);
-// 	for (int i = 0; i < 20; i++)
-// 	pthread_mutex_unlock(&state->forks[0]);
-// 	return (NULL);
-// }
-
-
 int	main(int argc, char **argv)
 {
 	t_state *state;
-	pthread_t philos[2];
 
 	if (validate_arguments(argc, argv))
 		return (1);
@@ -23,12 +10,9 @@ int	main(int argc, char **argv)
 	if (!state)
 		return (1);
 	init(state, argv);
-	if (state->error)
-		ft_putstr_fd("Error:\nSystem error", 2);
-
-	// int status;
-	// status = pthread_create(&philos[0], NULL, plus, state);
-
+	if (state->error == 1)
+		ft_putstr_fd("Error:\nCan't init mutex", 2);
+	create_threads(state);
 	free_everything(state);
 	return (0);
 }
