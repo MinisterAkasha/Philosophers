@@ -21,8 +21,24 @@ static void	init_start_time(int *start_time)
 	*start_time = tv.tv_usec;
 }
 
+static void	init_forks(pthread_mutex_t **forks, int forks_num, int *error)
+{
+	int i;
+
+	i = 0;
+	*forks = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * (forks_num));
+	while (i < forks_num)
+	{
+		if (pthread_mutex_init(*(&forks[i]), NULL) != 0)
+			*error = 1;
+		i++;
+	}
+}
+
 void	init(t_state *state, char **argv)
 {
+	state->error = 0;
 	init_philos_options(&state->philo_options, argv);
 	init_start_time(&state->start_time);
+	init_forks(&state->forks, state->philo_options.p_num, &state->error);
 }
