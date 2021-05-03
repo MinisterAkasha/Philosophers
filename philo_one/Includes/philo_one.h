@@ -10,19 +10,19 @@
 # include "utils.h"
 # include "validate.h"
 
-typedef enum Bool {
+typedef enum e_Bool {
 	FALSE,
 	TRUE
-}						Bool;
+}	t_Bool;
 
-typedef enum	state_type {
+typedef enum e_state_type {
 	EATING,
 	THINKING,
 	SLEEPING,
 	DEAD
-}							state_type;
+}	t_state_type;
 
-typedef struct	s_philos_options {
+typedef struct s_philos_options {
 	int	p_num;
 	int	time_to_die;
 	int	time_to_eat;
@@ -30,17 +30,18 @@ typedef struct	s_philos_options {
 	int	times_need_to_eat;
 }								t_philos_options;
 
-typedef struct	s_philo_state {
+typedef struct s_philo_state {
 	int	state;
 }								t_philo_state;
 
 typedef struct s_state {
+	int					start_time;
 	t_philo_state		*philo;
-	pthread_mutex_t	*forks;
-	int							start_time;
+	pthread_mutex_t		*forks;
 
-	t_philos_options philo_options;
-}								t_state;
+	int					error;
+	t_philos_options	philo_options;
+}				t_state;
 
 void	init(t_state *state, char **argv);
 
