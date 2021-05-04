@@ -2,6 +2,7 @@
 # define UTILS_H
 
 # include <string.h>
+# include <stdio.h>
 # include <unistd.h>
 
 long int	ft_atoi(const char *str);

@@ -44,6 +44,8 @@ void* observer(void *args)
 		while (i < state->philo_options.p_num)
 		{
 			update_current_time(&state);
+			if (state->philo_options.times_need_to_eat != -1 && check_has_every_philo_eaten(state))
+				return (NULL);
 			if (check_is_philo_dead(state->philo[i], state->philo_options.time_to_die, state->start_time))
 			{
 				state->philo[i].state = IS_DEAD;
@@ -52,8 +54,6 @@ void* observer(void *args)
 			}
 			i++;
 		}
-		if (state->philo_options.times_need_to_eat != -1 && check_has_every_philo_eaten(state))
-			return (NULL);
 	}
 	return (NULL);
 }
