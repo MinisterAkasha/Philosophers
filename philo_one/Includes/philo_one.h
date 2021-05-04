@@ -19,7 +19,7 @@ typedef enum e_state_type {
 	EATING,
 	THINKING,
 	SLEEPING,
-	DEAD
+	IS_DEAD
 }	t_state_type;
 
 typedef struct s_philos_options {
