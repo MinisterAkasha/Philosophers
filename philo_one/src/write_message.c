@@ -23,7 +23,7 @@ void write_message(t_state *state, int index)
 	ft_putnbr_fd(state->current_time, 1);
 	ft_putchar_fd(' ', 1);
 	ft_putnbr_fd(index + 1, 1);
-	ft_putstr_fd(" ", 1);
+	ft_putchar_fd(' ', 1);
 	ft_putstr_fd(get_message_from_state(state->philo[index].state), 1);
 	pthread_mutex_unlock(&state->message_mutex);
 }

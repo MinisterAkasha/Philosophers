@@ -13,7 +13,7 @@ static void	init_philos_options(t_philos_options *philo_options, char **argv)
 		philo_options->times_need_to_eat = -1;
 }
 
-static void	init_start_time(int *start_time)
+static void	init_start_time(long *start_time)
 {
 	struct timeval	tv;
 
@@ -62,8 +62,5 @@ int	init(t_state *state, char **argv)
 		error = 1;
 	if (pthread_mutex_init(&state->philo_pos_mutex, NULL) != 0)
 		error = 1;
-	if (pthread_mutex_init(&state->current_time_mutex, NULL) != 0)
-		error = 1;
-	state->is_some_dead = FALSE;
 	return (error);
 }

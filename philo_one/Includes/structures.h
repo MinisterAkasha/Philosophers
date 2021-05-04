@@ -33,8 +33,8 @@ typedef struct s_philo_state {
 }				t_philo_state;
 
 typedef struct s_state {
-	int					start_time;
-	int					current_time;
+	long				start_time;
+	long				current_time;
 
 	t_philos_options	philo_options;
 	t_philo_state		*philo;
@@ -42,12 +42,10 @@ typedef struct s_state {
 	pthread_mutex_t		*forks;
 	pthread_mutex_t		message_mutex;
 	pthread_mutex_t		philo_pos_mutex;
-	pthread_mutex_t		current_time_mutex;
 
 	pthread_t			observer_pt;
 
 	int					philo_pos;
-	int					is_some_dead;
 }				t_state;
 
 #endif
