@@ -40,13 +40,13 @@ typedef struct s_state {
 	t_philo_state		*philo;
 	pthread_mutex_t		*forks;
 	pthread_mutex_t		message_mutex;
-	pthread_t			monitoring_pt;
+	pthread_t			observer_pt;
 
 	int					error;
 	t_philos_options	philo_options;
 }				t_state;
 
-void init(t_state *state, char **argv);
+int init(t_state *state, char **argv);
 
 /*
 ** free
@@ -58,6 +58,6 @@ void free_everything(t_state *state);
 /*
 ** free
 */
-void create_threads(t_state *state);
+int create_threads(t_state *state);
 
 #endif

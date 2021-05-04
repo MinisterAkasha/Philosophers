@@ -2,7 +2,7 @@
 
 int a;
 
-void* monitoring(void *args)
+void* observer(void *args)
 {
 	t_state *state;
 
@@ -26,7 +26,7 @@ void* philo_life_cycle(void *args)
 	return (NULL);
 }
 
-void	create_threads(t_state *state)
+int create_threads(t_state *state)
 {
 	int status;
 	int i;
@@ -36,9 +36,14 @@ void	create_threads(t_state *state)
 	{
 		//TODO обработать ошибки
 		status = pthread_create(&state->philo[i].philo_thread, NULL, philo_life_cycle, state);
+		if (status != 0)
+			return (1);
 		pthread_detach(state->philo[i].philo_thread);
 		i++;
 	}
-	status = pthread_create(&state->monitoring_pt, NULL, monitoring, state);
-	pthread_join(state->monitoring_pt, NULL);
+	status = pthread_create(&state->observer_pt, NULL, observer, state);
+	if (status != 0)
+		return (1);
+	pthread_join(state->observer_pt, NULL);
+	return (0);
 }

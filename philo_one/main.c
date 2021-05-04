@@ -9,10 +9,18 @@ int	main(int argc, char **argv)
 	state = (t_state *)malloc(sizeof(t_state));
 	if (!state)
 		return (1);
-	init(state, argv);
-	if (state->error == 1)
+	if (init(state, argv))
+	{
 		ft_putstr_fd("Error:\nCan't init mutex", 2);
-	create_threads(state);
+		free_everything(state);
+		return (1);
+	}
+	if (create_threads(state))
+	{
+		ft_putstr_fd("Error:\nCan't create threads", 2);
+		free_everything(state);
+		return (1);
+	}
 	free_everything(state);
 	return (0);
 }

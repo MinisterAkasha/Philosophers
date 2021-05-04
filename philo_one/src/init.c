@@ -44,14 +44,12 @@ static void init_philosophers(t_philo_state **philo, int philo_num)
 	// philo[2]->state = 3;
 }
 
-void	init(t_state *state, char **argv)
+int	init(t_state *state, char **argv)
 {
 	state->error = 0;
 	init_philos_options(&state->philo_options, argv);
 	init_start_time(&state->start_time);
 	init_forks(&state->forks, state->philo_options.p_num, &state->error);
 	init_philosophers(&state->philo, state->philo_options.p_num);
-	// pthread_mutex_init(&state->forks[0], NULL);
-	// pthread_mutex_init(&state->forks[1], NULL);
-	// pthread_mutex_init(&state->forks[2], NULL);
+	return (state->error);
 }
