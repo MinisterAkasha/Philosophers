@@ -27,11 +27,14 @@ typedef struct s_philos_options {
 typedef struct s_philo_state {
 	int			state;
 	int			position;
+	int			eat_times;
+	int			last_eat;
 	pthread_t	philo_thread;
 }				t_philo_state;
 
 typedef struct s_state {
 	int					start_time;
+	int					current_time;
 
 	t_philos_options	philo_options;
 	t_philo_state		*philo;
@@ -39,6 +42,7 @@ typedef struct s_state {
 	pthread_mutex_t		*forks;
 	pthread_mutex_t		message_mutex;
 	pthread_mutex_t		philo_pos_mutex;
+	pthread_mutex_t		current_time_mutex;
 
 	pthread_t			observer_pt;
 
