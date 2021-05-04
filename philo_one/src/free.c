@@ -16,5 +16,6 @@ void free_everything(t_state *state)
 	free(state->philo);
 	pthread_mutex_destroy(&state->message_mutex);
 	pthread_mutex_destroy(&state->philo_pos_mutex);
+	pthread_mutex_destroy(&state->current_time_mutex);
 	free(state);
 }
