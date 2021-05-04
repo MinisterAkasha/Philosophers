@@ -77,3 +77,9 @@ void	ft_putnbr_fd(int n, int fd)
 	else
 		ft_putchar_fd(n + '0', fd);
 }
+
+void	ft_putchar_fd(char c, int fd)
+{
+	if (fd >= 0)
+		write(fd, &c, 1);
+}
