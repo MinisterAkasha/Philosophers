@@ -1,4 +1,5 @@
 #include "philo_one.h"
+#include "structures.h"
 
 static void	init_philos_options(t_philos_options *philo_options, char **argv)
 {
@@ -15,10 +16,9 @@ static void	init_philos_options(t_philos_options *philo_options, char **argv)
 static void	init_start_time(int *start_time)
 {
 	struct timeval	tv;
-	struct timezone	tz;
 
-	gettimeofday(&tv, &tz);
-	*start_time = tv.tv_usec;
+	gettimeofday(&tv, NULL);
+	*start_time = tv.tv_sec * 1000 + tv.tv_usec / 1000;
 }
 
 static void	init_forks(pthread_mutex_t **forks, int forks_num, int *error)
@@ -35,7 +35,7 @@ static void	init_forks(pthread_mutex_t **forks, int forks_num, int *error)
 	}
 }
 
-static void init_philosophers(t_philo_state **philo, int philo_num)
+static void init_philosophers(t_philo_state **philo, int philo_num, int start_time)
 {
 	int	i;
 
@@ -44,7 +44,8 @@ static void init_philosophers(t_philo_state **philo, int philo_num)
 	while (i < philo_num)
 	{
 		(*philo)[i].position = i;
-		(*philo)[i].state = IS_THINKING;
+		(*philo)[i].eat_times = 0;
+		(*philo)[i].last_eat = 0;
 		i++;
 	}
 }
@@ -56,10 +57,13 @@ int	init(t_state *state, char **argv)
 	init_philos_options(&state->philo_options, argv);
 	init_start_time(&state->start_time);
 	init_forks(&state->forks, state->philo_options.p_num, &error);
-	init_philosophers(&state->philo, state->philo_options.p_num);
+	init_philosophers(&state->philo, state->philo_options.p_num, state->start_time);
 	if (pthread_mutex_init(&state->message_mutex, NULL) != 0)
 		error = 1;
 	if (pthread_mutex_init(&state->philo_pos_mutex, NULL) != 0)
 		error = 1;
+	if (pthread_mutex_init(&state->current_time_mutex, NULL) != 0)
+		error = 1;
+	state->is_some_dead = FALSE;
 	return (error);
 }
