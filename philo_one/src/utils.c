@@ -1,6 +1,6 @@
 #include "utils.h"
 
-int	ft_atoi(const char *str)
+long int	ft_atoi(const char *str)
 {
 	int			sign;
 	long int	sum;
@@ -26,7 +26,7 @@ int	ft_atoi(const char *str)
 			return (0);
 		sum = sum * 10 + (*str++ - 48);
 	}
-	return ((int)(sum * sign));
+	return ((long int)(sum * sign));
 }
 
 size_t	ft_strlen(const char *s)

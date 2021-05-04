@@ -17,11 +17,11 @@ typedef enum e_state_type {
 }	t_state_type;
 
 typedef struct s_philos_options {
-	int	p_num;
-	int	time_to_die;
-	int	time_to_eat;
-	int	time_to_sleep;
-	int	times_need_to_eat;
+	int			p_num;
+	long int	time_to_die;
+	long int	time_to_eat;
+	long int	time_to_sleep;
+	long int	times_need_to_eat;
 }				t_philos_options;
 
 typedef struct s_philo_state {
