@@ -13,23 +13,12 @@ void* observer(void *args)
 		{
 			if (state->philo[i].state == IS_DEAD)
 			{
-				//TODO write_mesasge();
+				write_message(state->message_mutex, i, IS_DEAD);
 				return (NULL);
 			}
 			i++;
 		}
 	}
-	return (NULL);
-}
-
-void* philo_life_cycle(void *args)
-{
-	t_state *state;
-
-	state = (t_state*) args;
-	pthread_mutex_lock(&state->forks[0]);
-	printf("1 :>> %d\n", 1);
-	pthread_mutex_unlock(&state->forks[0]);
 	return (NULL);
 }
 
@@ -40,9 +29,10 @@ int create_threads(t_state *state)
 	i = 0;
 	while (i < state->philo_options.p_num)
 	{
+		state->philo_pos = i;
 		if (pthread_create(&state->philo[i].philo_thread, NULL, philo_life_cycle, state) != 0)
 			return (1);
-		pthread_detach(state->philo[i].philo_thread);
+		pthread_join(state->philo[i].philo_thread, NULL);
 		i++;
 	}
 	if (pthread_create(&state->observer_pt, NULL, observer, state) != 0)

@@ -8,7 +8,8 @@ C_FILES = main.c \
 		init.c \
 		free.c \
 		create_threads.c \
-		write_message.c
+		write_message.c \
+		life_cycle.c
 
 OBJDIR = ./src/obj
 OBJ = $(C_FILES:%.c=%.o)

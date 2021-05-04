@@ -27,4 +27,10 @@ void free_everything(t_state *state);
 */
 int create_threads(t_state *state);
 
+/*
+** life_cycle
+*/
+
+void* philo_life_cycle(void *args);
+
 #endif
