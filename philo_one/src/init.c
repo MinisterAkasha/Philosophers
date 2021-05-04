@@ -44,16 +44,22 @@ static void init_philosophers(t_philo_state **philo, int philo_num)
 	while (i < philo_num)
 	{
 		(*philo)[i].position = i;
+		(*philo)[i].state = IS_THINKING;
 		i++;
 	}
 }
 
 int	init(t_state *state, char **argv)
 {
-	state->error = 0;
+	int	error;
+	error = 0;
 	init_philos_options(&state->philo_options, argv);
 	init_start_time(&state->start_time);
-	init_forks(&state->forks, state->philo_options.p_num, &state->error);
+	init_forks(&state->forks, state->philo_options.p_num, &error);
 	init_philosophers(&state->philo, state->philo_options.p_num);
-	return (state->error);
+	if (pthread_mutex_init(&state->message_mutex, NULL) != 0)
+		error = 1;
+	if (pthread_mutex_init(&state->philo_pos_mutex, NULL) != 0)
+		error = 1;
+	return (error);
 }
