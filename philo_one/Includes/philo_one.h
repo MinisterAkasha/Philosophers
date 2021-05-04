@@ -32,6 +32,7 @@ typedef struct s_philos_options {
 
 typedef struct s_philo_state {
 	int			state;
+	int			position;
 	pthread_t	philo_thread;
 }				t_philo_state;
 

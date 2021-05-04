@@ -9,7 +9,7 @@ void* observer(void *args)
 	state = (t_state*) args;
 	while (1)
 	{
-
+		
 	}
 	return (NULL);
 }

@@ -37,11 +37,15 @@ static void	init_forks(pthread_mutex_t **forks, int forks_num, int *error)
 
 static void init_philosophers(t_philo_state **philo, int philo_num)
 {
-	*philo = (t_philo_state *)malloc(sizeof(t_philo_state) * 1);
+	int	i;
 
-	// philo[0]->state = 1;
-	// philo[1]->state = 2;
-	// philo[2]->state = 3;
+	i = 0;
+	*philo = (t_philo_state *)malloc(sizeof(t_philo_state) * 1);
+	while (i < philo_num)
+	{
+		(*philo)[i].position = i;
+		i++;
+	}
 }
 
 int	init(t_state *state, char **argv)
