@@ -9,6 +9,7 @@ typedef enum e_Bool {
 }	t_Bool;
 
 typedef enum e_state_type {
+	TAKE_FORK,
 	EATING,
 	THINKING,
 	SLEEPING,
