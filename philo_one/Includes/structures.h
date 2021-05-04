@@ -9,10 +9,10 @@ typedef enum e_Bool {
 }	t_Bool;
 
 typedef enum e_state_type {
-	TAKE_FORK,
-	EATING,
-	THINKING,
-	SLEEPING,
+	IS_TAKE_FORK,
+	IS_EATING,
+	IS_THINKING,
+	IS_SLEEPING,
 	IS_DEAD
 }	t_state_type;
 
@@ -32,13 +32,18 @@ typedef struct s_philo_state {
 
 typedef struct s_state {
 	int					start_time;
+
+	t_philos_options	philo_options;
 	t_philo_state		*philo;
+
 	pthread_mutex_t		*forks;
 	pthread_mutex_t		message_mutex;
+	pthread_mutex_t		philo_pos_mutex;
+
 	pthread_t			observer_pt;
 
-	int					error;
-	t_philos_options	philo_options;
+	int					philo_pos;
+	int					is_some_dead;
 }				t_state;
 
 #endif
