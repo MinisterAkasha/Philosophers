@@ -10,7 +10,7 @@ int	main(int argc, char **argv)
 	if (!state)
 		return (1);
 	if (init(state, argv))
-		return (exit_error("Error:\nCan't init mutex\n", state));
+		return (exit_error("Error:\nSystem error\n", state));
 	if (create_threads(state))
 		return (exit_error("Error:\nCan't create threads\n", state));
 	free_everything(state);

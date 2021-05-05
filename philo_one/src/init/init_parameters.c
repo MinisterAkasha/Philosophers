@@ -28,6 +28,11 @@ void	init_mutex(t_state *state, int forks_num, int *error)
 	i = 0;
 	state->forks = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) \
 		* (forks_num));
+	if (!state->forks)
+	{
+		*error = 2;
+		return ;
+	}
 	while (i < forks_num)
 	{
 		if (pthread_mutex_init(&(state->forks[i]), NULL) != 0)
@@ -41,12 +46,17 @@ void	init_mutex(t_state *state, int forks_num, int *error)
 }
 
 void	init_philosophers(t_philo_state **philo, int philo_num, \
-	int start_time)
+	int start_time, int *error)
 {
 	int	i;
 
 	i = 0;
 	*philo = (t_philo_state *)malloc(sizeof(t_philo_state) * 1);
+	if (!philo)
+	{
+		*error = 2;
+		return ;
+	}
 	while (i < philo_num)
 	{
 		(*philo)[i].position = i;
