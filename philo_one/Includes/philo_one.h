@@ -39,7 +39,7 @@ void* philo_life_cycle(void *args);
 */
 
 void update_current_time(t_state **state);
-int	check_is_philo_dead(t_philo_state philo, long time_to_die, long start_time);
+int	get_dead_philo_index(t_state *state);
 int check_has_every_philo_eaten(t_state *state);
 void* observer(void *args);
 
