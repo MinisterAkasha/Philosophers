@@ -2,7 +2,7 @@
 
 int	main(int argc, char **argv)
 {
-	t_state *state;
+	t_state	*state;
 
 	if (validate_arguments(argc, argv))
 		return (1);
