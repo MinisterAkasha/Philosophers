@@ -34,7 +34,6 @@ typedef struct s_philo_state {
 
 typedef struct s_state {
 	long				start_time;
-	long				current_time;
 
 	t_philos_options	philo_options;
 	t_philo_state		*philo;

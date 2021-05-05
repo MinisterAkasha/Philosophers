@@ -18,7 +18,7 @@ static void	init_start_time(long *start_time)
 	struct timeval	tv;
 
 	gettimeofday(&tv, NULL);
-	*start_time = tv.tv_sec * 1000 + tv.tv_usec / 1000;
+	*start_time = tv.tv_sec * 1000 + (long)(tv.tv_usec / 1000);
 }
 
 static void	init_forks(pthread_mutex_t **forks, int forks_num, int *error)
@@ -72,7 +72,6 @@ int	init(t_state *state, char **argv)
 		error = 1;
 	if (pthread_mutex_init(&state->philo_pos_mutex, NULL) != 0)
 		error = 1;
-	update_current_time(&state);
 	state->philo_pos = 0;
 	init_str_message(state->str_message);
 	return (error);

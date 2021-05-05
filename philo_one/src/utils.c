@@ -1,4 +1,6 @@
 #include "utils.h"
+#include "structures.h"
+#include <sys/time.h>
 
 long int	ft_atoi(const char *str)
 {
@@ -82,4 +84,12 @@ void	ft_putchar_fd(char c, int fd)
 {
 	if (fd >= 0)
 		write(fd, &c, 1);
+}
+
+long int get_current_time(t_state *state)
+{
+	static struct timeval tv;
+
+	gettimeofday(&tv, NULL);
+	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000) - state->start_time);
 }
