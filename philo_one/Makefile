@@ -12,6 +12,8 @@ C_FILES = main.c \
 		create_threads.c \
 		write_message.c \
 		life_cycle.c \
+		life_cycle_utils.c \
+		routine.c \
 		observer.c \
 		exit_error.c
 
@@ -21,7 +23,9 @@ O_FILES = $(addprefix $(OBJDIR)/, $(OBJ))
 
 SRC_PATHS = ./src/ \
 			./src/init/ \
-			./src/utils/
+			./src/utils/ \
+			./src/life_cycle/ 
+			
 
 vpath %.c $(SRC_PATHS)
 vpath %.o $(OBJDIR)
