@@ -14,5 +14,6 @@ int			ft_isdigit(int c);
 void		ft_putnbr_fd(int n, int fd);
 void		ft_putchar_fd(char c, int fd);
 long int	get_current_time(t_state *state);
+void		my_usleep(unsigned int time);
 
 #endif

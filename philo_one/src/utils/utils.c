@@ -51,3 +51,18 @@ long int	get_current_time(t_state *state)
 	gettimeofday(&tv, NULL);
 	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000) - state->start_time);
 }
+
+void	my_usleep(unsigned int time)
+{
+	struct timeval	start_time;
+	struct timeval	current_time;
+
+	gettimeofday(&start_time, NULL);
+	gettimeofday(&current_time, NULL);
+	while ((current_time.tv_sec - start_time.tv_sec) * 1000000 \
+		+ (long)(current_time.tv_usec - start_time.tv_usec) < time)
+	{
+		usleep(50);
+		gettimeofday(&current_time, NULL);
+	}
+}

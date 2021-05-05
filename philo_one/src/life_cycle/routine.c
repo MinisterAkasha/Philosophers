@@ -41,7 +41,7 @@ void	philo_eating(t_state *state, int pos, int forks[2])
 	write_message(state, pos);
 	state->philo[pos].last_eat = get_current_time(state);
 	state->philo[pos].eat_times++;
-	usleep(state->philo_options.time_to_eat * 1000);
+	my_usleep(state->philo_options.time_to_eat * 1000);
 	philo_put_forks(&state->forks[forks[0]], &state->forks[forks[1]], pos);
 }
 
@@ -49,7 +49,7 @@ void	philo_sleeping(t_state *state, int pos)
 {
 	state->philo[pos].state = IS_SLEEPING;
 	write_message(state, pos);
-	usleep(state->philo_options.time_to_sleep * 1000);
+	my_usleep(state->philo_options.time_to_sleep * 1000);
 }
 
 void	philo_thinking(t_state *state, int pos)
