@@ -50,6 +50,16 @@ static void init_philosophers(t_philo_state **philo, int philo_num, int start_ti
 	}
 }
 
+static void init_str_message(char *str_message[5])
+{
+
+	str_message[IS_TAKE_FORK] = "has taken a fork\n";
+	str_message[IS_EATING] = "is eating\n";
+	str_message[IS_THINKING] = "is thinking\n";
+	str_message[IS_SLEEPING] = "is sleeping\n";
+	str_message[IS_DEAD] = "died\n";
+}
+
 int	init(t_state *state, char **argv)
 {
 	int	error;
@@ -64,5 +74,6 @@ int	init(t_state *state, char **argv)
 		error = 1;
 	update_current_time(&state);
 	state->philo_pos = 0;
+	init_str_message(state->str_message);
 	return (error);
 }

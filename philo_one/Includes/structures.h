@@ -45,6 +45,7 @@ typedef struct s_state {
 
 	pthread_t			observer_pt;
 
+	char				*str_message[5];
 	int					philo_pos;
 }				t_state;
 
