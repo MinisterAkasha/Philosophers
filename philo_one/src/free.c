@@ -15,6 +15,5 @@ void free_everything(t_state *state)
 	free_forks(state->forks, state->philo_options.p_num);
 	free(state->philo);
 	pthread_mutex_destroy(&state->message_mutex);
-	pthread_mutex_destroy(&state->takink_forks_mutex);
 	free(state);
 }

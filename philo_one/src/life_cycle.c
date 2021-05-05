@@ -21,12 +21,12 @@ void get_forks_index(int pos, int philo_num, int (*forks)[2])
 
 void philo_put_forks(pthread_mutex_t *left_fork, pthread_mutex_t *right_fork, int pos)
 {
-	if ((pos & 1) == TRUE)//1-3-5...
+	if ((pos & 1) == TRUE)
 	{
 		pthread_mutex_unlock(right_fork);
 		pthread_mutex_unlock(left_fork);
 	}
-	else if ((pos & 1) == FALSE)//0-2-4...
+	else if ((pos & 1) == FALSE)
 	{
 		pthread_mutex_unlock(left_fork);
 		pthread_mutex_unlock(right_fork);
@@ -36,22 +36,20 @@ void philo_put_forks(pthread_mutex_t *left_fork, pthread_mutex_t *right_fork, in
 void philo_take_forks(pthread_mutex_t *left_fork, pthread_mutex_t *right_fork, int pos, t_state *state)
 {
 	state->philo[pos].state = IS_TAKE_FORK;
-	pthread_mutex_lock(&state->takink_forks_mutex);
-	if ((pos & 1) == TRUE)//1-3-5...
+	if ((pos & 1) == TRUE)
 	{
 		pthread_mutex_lock(left_fork);
 		write_message(state, pos);
 		pthread_mutex_lock(right_fork);
 		write_message(state, pos);
 	}
-	else if ((pos & 1) == FALSE)//0-2-4...
+	else if ((pos & 1) == FALSE)
 	{
 		pthread_mutex_lock(right_fork);
 		write_message(state, pos);
 		pthread_mutex_lock(left_fork);
 		write_message(state, pos);
 	}
-	pthread_mutex_unlock(&state->takink_forks_mutex);
 }
 
 void philo_eating(t_state *state, int pos, int forks[2])
@@ -86,7 +84,6 @@ void* philo_life_cycle(void *args)
 	state = (t_state*) args;
 	pos = get_philo_pos(state);
 	get_forks_index(pos, state->philo_options.p_num, &forks);
-	// printf("POS: %d, FORKS: %d --- %d\n", pos, forks[0], forks[1]);
 	while (TRUE)
 	{
 		if (state->philo[pos].eat_times == state->philo_options.times_need_to_eat)

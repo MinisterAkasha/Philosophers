@@ -52,7 +52,6 @@ static void init_philosophers(t_philo_state **philo, int philo_num, int start_ti
 
 static void init_str_message(char *str_message[5])
 {
-
 	str_message[IS_TAKE_FORK] = "has taken a fork\n";
 	str_message[IS_EATING] = "is eating\n";
 	str_message[IS_THINKING] = "is thinking\n";
@@ -71,8 +70,6 @@ int	init(t_state *state, char **argv)
 	if (pthread_mutex_init(&state->message_mutex, NULL) != 0)
 		error = 1;
 	if (pthread_mutex_init(&state->philo_pos_mutex, NULL) != 0)
-		error = 1;
-	if (pthread_mutex_init(&state->takink_forks_mutex, NULL) != 0)
 		error = 1;
 	state->philo_pos = 0;
 	init_str_message(state->str_message);
