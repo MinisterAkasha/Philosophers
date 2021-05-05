@@ -51,7 +51,7 @@ void	init_philosophers(t_philo_state **philo, int philo_num, \
 	int	i;
 
 	i = 0;
-	*philo = (t_philo_state *)malloc(sizeof(t_philo_state) * 1);
+	*philo = (t_philo_state *)malloc(sizeof(t_philo_state) * philo_num);
 	if (!philo)
 	{
 		*error = 2;
