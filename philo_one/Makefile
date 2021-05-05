@@ -5,7 +5,8 @@ INCLUDE = ./Includes
 C_FILES = main.c \
 		validate_arguments.c \
 		utils.c \
-		init.c \
+		init_entrypoint.c \
+		init_parameters.c \
 		free.c \
 		create_threads.c \
 		write_message.c \
@@ -17,7 +18,8 @@ OBJDIR = ./src/obj
 OBJ = $(C_FILES:%.c=%.o)
 O_FILES = $(addprefix $(OBJDIR)/, $(OBJ))
 
-SRC_PATHS = ./src
+SRC_PATHS = ./src/ \
+			./src/init/
 
 vpath %.c $(SRC_PATHS)
 vpath %.o $(OBJDIR)

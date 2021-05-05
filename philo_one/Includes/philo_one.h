@@ -12,9 +12,17 @@
 # include "validate.h"
 # include "write_message.h"
 
+/*
+** free
+*/
 
-int init(t_state *state, char **argv);
-void update_current_time(t_state **state);
+int		init(t_state *state, char **argv);
+void	init_philos_options(t_philos_options *philo_options, char **argv);
+void	init_start_time(long *start_time);
+void	init_mutex(t_state *state, int forks_num, int *error);
+void	init_philosophers(t_philo_state **philo, int philo_num, \
+	int start_time);
+void	init_str_message(char *str_message[5]);
 
 /*
 ** free
@@ -38,7 +46,6 @@ void* philo_life_cycle(void *args);
 ** observer
 */
 
-void update_current_time(t_state **state);
 int	get_dead_philo_index(t_state *state);
 int check_has_every_philo_eaten(t_state *state);
 void* observer(void *args);
