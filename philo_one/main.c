@@ -10,18 +10,10 @@ int	main(int argc, char **argv)
 	if (!state)
 		return (1);
 	if (init(state, argv))
-	{
-		ft_putstr_fd("Error:\nCan't init mutex", 2);
-		free_everything(state);
-		return (1);
-	}
+		return (exit_error("Error:\nCan't init mutex\n", state));
 	if (create_threads(state))
-	{
-		ft_putstr_fd("Error:\nCan't create threads", 2);
-		free_everything(state);
-		return (1);
-	}
+		return (exit_error("Error:\nCan't create threads\n", state));
 	free_everything(state);
-	ft_putstr_fd("End of simulation\n", 1);
+	printf("End of simulation\n");
 	return (0);
 }

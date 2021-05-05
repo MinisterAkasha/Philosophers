@@ -24,7 +24,7 @@ void free_forks(pthread_mutex_t *forks, int forks_num);
 void free_everything(t_state *state);
 
 /*
-** free
+** create_threads
 */
 int create_threads(t_state *state);
 
@@ -42,5 +42,11 @@ void update_current_time(t_state **state);
 int	get_dead_philo_index(t_state *state);
 int check_has_every_philo_eaten(t_state *state);
 void* observer(void *args);
+
+/*
+** exit_erorr
+*/
+
+int	exit_error(char *error, t_state *state);
 
 #endif
