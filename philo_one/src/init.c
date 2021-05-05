@@ -63,5 +63,6 @@ int	init(t_state *state, char **argv)
 	if (pthread_mutex_init(&state->philo_pos_mutex, NULL) != 0)
 		error = 1;
 	update_current_time(&state);
+	state->philo_pos = 0;
 	return (error);
 }
