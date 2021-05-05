@@ -28,32 +28,42 @@ void	init_str_message(char *str_message[5]);
 ** free
 */
 
-void free_forks(pthread_mutex_t *forks, int forks_num);
-void free_everything(t_state *state);
+void	free_forks(pthread_mutex_t *forks, int forks_num);
+void	free_everything(t_state *state);
 
 /*
 ** create_threads
 */
-int create_threads(t_state *state);
+
+int		create_threads(t_state *state);
 
 /*
 ** life_cycle
 */
 
-void* philo_life_cycle(void *args);
+void	*philo_life_cycle(void *args);
+int		get_philo_pos(t_state *state);
+void	get_forks_index(int pos, int philo_num, int (*forks)[2]);
+void	philo_put_forks(pthread_mutex_t *left_fork, \
+	pthread_mutex_t *right_fork, int pos);
+void	philo_take_forks(pthread_mutex_t *left_fork, \
+	pthread_mutex_t *right_fork, int pos, t_state *state);
+void	philo_eating(t_state *state, int pos, int forks[2]);
+void	philo_sleeping(t_state *state, int pos);
+void	philo_thinking(t_state *state, int pos);
 
 /*
 ** observer
 */
 
-int	get_dead_philo_index(t_state *state);
-int check_has_every_philo_eaten(t_state *state);
-void* observer(void *args);
+int		get_dead_philo_index(t_state *state);
+int		check_has_every_philo_eaten(t_state *state);
+void	*observer(void *args);
 
 /*
 ** exit_erorr
 */
 
-int	exit_error(char *error, t_state *state);
+int		exit_error(char *error, t_state *state);
 
 #endif
