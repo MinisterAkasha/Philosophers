@@ -40,6 +40,7 @@ typedef struct s_state {
 
 	pthread_mutex_t		*forks;
 	pthread_mutex_t		message_mutex;
+	pthread_mutex_t		takink_forks_mutex;
 	pthread_mutex_t		philo_pos_mutex;
 
 	pthread_t			observer_pt;

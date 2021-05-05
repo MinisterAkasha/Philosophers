@@ -36,6 +36,7 @@ void philo_put_forks(pthread_mutex_t *left_fork, pthread_mutex_t *right_fork, in
 void philo_take_forks(pthread_mutex_t *left_fork, pthread_mutex_t *right_fork, int pos, t_state *state)
 {
 	state->philo[pos].state = IS_TAKE_FORK;
+	pthread_mutex_lock(&state->takink_forks_mutex);
 	if ((pos & 1) == TRUE)//1-3-5...
 	{
 		pthread_mutex_lock(left_fork);
@@ -50,6 +51,7 @@ void philo_take_forks(pthread_mutex_t *left_fork, pthread_mutex_t *right_fork, i
 		pthread_mutex_lock(left_fork);
 		write_message(state, pos);
 	}
+	pthread_mutex_unlock(&state->takink_forks_mutex);
 }
 
 void philo_eating(t_state *state, int pos, int forks[2])
