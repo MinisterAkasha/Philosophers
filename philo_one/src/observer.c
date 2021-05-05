@@ -44,6 +44,7 @@ void* observer(void *args)
 		dead_philo_index = get_dead_philo_index(state);
 		if (dead_philo_index != -1)
 		{
+			pthread_mutex_lock(&state->message_mutex);
 			state->philo[dead_philo_index].state = IS_DEAD;
 			write_message(state, dead_philo_index);
 			return (NULL);
