@@ -1,8 +1,8 @@
 #include "philo_one.h"
 
-void free_forks(pthread_mutex_t *forks, int forks_num)
+void	free_forks(pthread_mutex_t *forks, int forks_num)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < forks_num)
@@ -10,7 +10,7 @@ void free_forks(pthread_mutex_t *forks, int forks_num)
 	free(forks);
 }
 
-void free_everything(t_state *state)
+void	free_everything(t_state *state)
 {
 	free_forks(state->forks, state->philo_options.p_num);
 	free(state->philo);

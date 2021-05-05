@@ -2,7 +2,7 @@
 #include "structures.h"
 #include "utils.h"
 
-void write_message(t_state *state, int index)
+void	write_message(t_state *state, int index)
 {
 	pthread_mutex_lock(&state->message_mutex);
 	ft_putnbr_fd(get_current_time(state), 1);

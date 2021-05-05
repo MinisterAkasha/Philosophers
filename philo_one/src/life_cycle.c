@@ -2,7 +2,7 @@
 
 int	get_philo_pos(t_state *state)
 {
-	int pos;
+	int	pos;
 
 	pthread_mutex_lock(&state->philo_pos_mutex);
 	pos = state->philo_pos++;
@@ -10,7 +10,7 @@ int	get_philo_pos(t_state *state)
 	return (pos);
 }
 
-void get_forks_index(int pos, int philo_num, int (*forks)[2])
+void	get_forks_index(int pos, int philo_num, int (*forks)[2])
 {
 	(*forks)[0] = pos;
 	if (pos == philo_num - 1)
@@ -19,7 +19,8 @@ void get_forks_index(int pos, int philo_num, int (*forks)[2])
 		(*forks)[1] = pos + 1;
 }
 
-void philo_put_forks(pthread_mutex_t *left_fork, pthread_mutex_t *right_fork, int pos)
+void	philo_put_forks(pthread_mutex_t *left_fork, \
+	pthread_mutex_t *right_fork, int pos)
 {
 	if ((pos & 1) == TRUE)
 	{
@@ -33,7 +34,8 @@ void philo_put_forks(pthread_mutex_t *left_fork, pthread_mutex_t *right_fork, in
 	}
 }
 
-void philo_take_forks(pthread_mutex_t *left_fork, pthread_mutex_t *right_fork, int pos, t_state *state)
+void	philo_take_forks(pthread_mutex_t *left_fork, \
+	pthread_mutex_t *right_fork, int pos, t_state *state)
 {
 	state->philo[pos].state = IS_TAKE_FORK;
 	if ((pos & 1) == TRUE)
@@ -52,7 +54,7 @@ void philo_take_forks(pthread_mutex_t *left_fork, pthread_mutex_t *right_fork, i
 	}
 }
 
-void philo_eating(t_state *state, int pos, int forks[2])
+void	philo_eating(t_state *state, int pos, int forks[2])
 {
 	state->philo[pos].state = IS_EATING;
 	write_message(state, pos);
@@ -62,33 +64,34 @@ void philo_eating(t_state *state, int pos, int forks[2])
 	philo_put_forks(&state->forks[forks[0]], &state->forks[forks[1]], pos);
 }
 
-void philo_sleeping(t_state *state, int pos)
+void	philo_sleeping(t_state *state, int pos)
 {
 	state->philo[pos].state = IS_SLEEPING;
 	write_message(state, pos);
 	usleep(state->philo_options.time_to_sleep * 1000);
 }
 
-void philo_thinking(t_state *state, int pos)
+void	philo_thinking(t_state *state, int pos)
 {
 	state->philo[pos].state = IS_THINKING;
 	write_message(state, pos);
 }
 
-void* philo_life_cycle(void *args)
+void	*philo_life_cycle(void *args)
 {
-	t_state *state;
+	t_state	*state;
 	int		pos;
 	int		forks[2];
 
-	state = (t_state*) args;
+	state = (t_state *) args;
 	pos = get_philo_pos(state);
 	get_forks_index(pos, state->philo_options.p_num, &forks);
 	while (TRUE)
 	{
-		if (state->philo[pos].eat_times == state->philo_options.times_need_to_eat)
+		if (state->philo[pos].eat_times == state->philo_options.times_need_eat)
 			return (NULL);
-		philo_take_forks(&state->forks[forks[0]], &state->forks[forks[1]], pos, state);
+		philo_take_forks(&state->forks[forks[0]], \
+			&state->forks[forks[1]], pos, state);
 		philo_eating(state, pos, forks);
 		philo_sleeping(state, pos);
 		philo_thinking(state, pos);

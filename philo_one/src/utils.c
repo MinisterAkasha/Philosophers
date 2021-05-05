@@ -86,9 +86,9 @@ void	ft_putchar_fd(char c, int fd)
 		write(fd, &c, 1);
 }
 
-long int get_current_time(t_state *state)
+long int	get_current_time(t_state *state)
 {
-	static struct timeval tv;
+	static struct timeval	tv;
 
 	gettimeofday(&tv, NULL);
 	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000) - state->start_time);

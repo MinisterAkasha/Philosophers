@@ -1,13 +1,14 @@
 #include "philo_one.h"
 
-int create_threads(t_state *state)
+int	create_threads(t_state *state)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < state->philo_options.p_num)
 	{
-		if (pthread_create(&state->philo[i].philo_thread, NULL, philo_life_cycle, state) != 0)
+		if (pthread_create(&state->philo[i].philo_thread, \
+			NULL, philo_life_cycle, state) != 0)
 			return (1);
 		pthread_detach(state->philo[i].philo_thread);
 		i++;
