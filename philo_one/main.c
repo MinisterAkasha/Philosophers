@@ -22,5 +22,6 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	free_everything(state);
+	ft_putstr_fd("End of simulation\n", 1);
 	return (0);
 }
