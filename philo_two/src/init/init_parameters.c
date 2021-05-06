@@ -13,7 +13,7 @@ void	init_semaphores(t_state *state, int *error)
 	state->take_forks_sem = sem_open(SEM_PHILO_TAKE_FORKS, O_CREAT | O_EXCL, 0600, 1);
 	if (state->forks_sem == SEM_FAILED || state->message_sem == SEM_FAILED \
 		|| state->philo_pos_sem == SEM_FAILED || state->take_forks_sem == SEM_FAILED)
-			*error = 1;
+			*error = SEMAPHORE_ERROR;
 }
 
 void	init_philos_options(t_philos_options *philo_options, char **argv)
@@ -45,7 +45,7 @@ void	init_philosophers(t_philo_state **philo, int philo_num, \
 	*philo = (t_philo_state *)malloc(sizeof(t_philo_state) * philo_num);
 	if (!philo)
 	{
-		*error = 2;
+		*error = MALLOC_ERROR;
 		return ;
 	}
 	while (i < philo_num)
