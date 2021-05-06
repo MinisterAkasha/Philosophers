@@ -8,11 +8,11 @@ int	main(int argc, char **argv)
 		return (1);
 	state = (t_state *)malloc(sizeof(t_state));
 	if (!state)
-		return (1);
-	if (init(state, argv))
-		return (exit_error("Error:\nSystem error\n", state));
+		exit_error(MALLOC_ERROR, state);
+	if (init(state, argv) != -1)
+		exit_error(state->error_code, state);
 	if (create_processes(state))
-		return (exit_error("Error:\nCan't create process\n", state));
+		exit_error(state->error_code, state);
 	free_everything(state);
 	printf("End of simulation\n");
 	return (0);

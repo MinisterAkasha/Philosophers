@@ -7,7 +7,7 @@ int	philo_life_cycle(t_state *state)
 
 	pos = state->philo_pos;
 	if (pthread_create(&philo_thread, NULL, observer, state) != 0)
-		return (1);
+		return (2);
 	pthread_detach(philo_thread);
 	while (TRUE)
 	{

@@ -9,11 +9,13 @@ void	wait_processes(t_state *state)
 	waitpid(0, &status, WUNTRACED);
 	if (!status)
 		wait_processes(state);
-	else
+	else if (status % 256 == 1)
 	{
 		while (i < state->philo_options.p_num)
 			kill(state->philo[i++].philo_pid, SIGKILL);
 	}
+	else if (status % 256 == 2)
+		exit_error(THREAD_ERROR, state);
 }
 
 int	create_processes(t_state *state)
@@ -28,7 +30,7 @@ int	create_processes(t_state *state)
 		if (!state->philo[i].philo_pid)
 			philo_life_cycle(state);
 		if (state->philo[i].philo_pid < 0)
-			return (1);
+			exit_error(FORK_ERROR, state);
 		i++;
 	}
 	wait_processes(state);

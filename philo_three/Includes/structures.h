@@ -18,6 +18,13 @@ typedef enum e_state_type {
 	IS_DEAD
 }	t_state_type;
 
+typedef enum e_error_codes {
+	MALLOC_ERROR,
+	SEMAPHORE_ERROR,
+	THREAD_ERROR,
+	FORK_ERROR
+}	t_error_codes;
+
 typedef struct s_philos_options {
 	int			p_num;
 	long int	time_to_die;
@@ -50,6 +57,8 @@ typedef struct s_state {
 
 	char				*str_message[5];
 	int					philo_pos;
+	
+	int					error_code;
 }				t_state;
 
 #endif
