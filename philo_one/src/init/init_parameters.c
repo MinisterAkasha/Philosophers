@@ -30,19 +30,19 @@ void	init_mutex(t_state *state, int forks_num, int *error)
 		* (forks_num));
 	if (!state->forks)
 	{
-		*error = 2;
+		*error = MALLOC_ERROR;
 		return ;
 	}
 	while (i < forks_num)
 	{
 		if (pthread_mutex_init(&(state->forks[i]), NULL) != 0)
-			*error = 1;
+			*error = MUTEX_ERROR;
 		i++;
 	}
 	if (pthread_mutex_init(&state->message_mutex, NULL) != 0)
-		*error = 1;
+		*error = MUTEX_ERROR;
 	if (pthread_mutex_init(&state->philo_pos_mutex, NULL) != 0)
-		*error = 1;
+		*error = MUTEX_ERROR;
 }
 
 void	init_philosophers(t_philo_state **philo, int philo_num, \
@@ -54,7 +54,7 @@ void	init_philosophers(t_philo_state **philo, int philo_num, \
 	*philo = (t_philo_state *)malloc(sizeof(t_philo_state) * philo_num);
 	if (!philo)
 	{
-		*error = 2;
+		*error = MALLOC_ERROR;
 		return ;
 	}
 	while (i < philo_num)

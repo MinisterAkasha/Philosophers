@@ -64,6 +64,6 @@ void	*observer(void *args);
 ** exit_erorr
 */
 
-int		exit_error(char *error, t_state *state);
+int		exit_error(int error_code, t_state *state);
 
 #endif

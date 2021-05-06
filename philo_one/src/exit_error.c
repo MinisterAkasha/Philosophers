@@ -1,8 +1,19 @@
 #include "philo_one.h"
-
-int	exit_error(char *error, t_state *state)
+char	*get_error_string(int error_code)
 {
-	ft_putstr_fd(error, 2);
-	free_everything(state);
+	if (error_code == MALLOC_ERROR)
+		return ("Malloc error\n");
+	else if (error_code == MUTEX_ERROR)
+		return ("Mutex error\n");
+	else if (error_code == THREAD_ERROR)
+		return ("Thread error\n");
+	return ("Unknown error\n");
+}
+
+int	exit_error(int error_code, t_state *state)
+{
+	ft_putstr_fd(get_error_string(error_code), 2);
+	if (state)
+		free_everything(state);
 	return (1);
 }
