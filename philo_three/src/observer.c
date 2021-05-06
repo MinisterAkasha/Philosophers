@@ -13,8 +13,7 @@ void	*observer(void *args)
 			state->philo[state->philo_pos].state = IS_DEAD;
 			write_message(state, state->philo_pos);
 			sem_wait(state->message_sem);
-			exit(0);
-			// return (NULL);
+			exit(1);
 		}
 	}
 	return (NULL);
