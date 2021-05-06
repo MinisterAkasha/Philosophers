@@ -29,7 +29,7 @@ int	create_processes(t_state *state)
 		state->philo[i].philo_pid = fork();
 		if (!state->philo[i].philo_pid)
 			philo_life_cycle(state);
-		if (state->philo[i].philo_pid < 0)
+		else if (state->philo[i].philo_pid < 0)
 			exit_error(FORK_ERROR, state);
 		i++;
 	}
