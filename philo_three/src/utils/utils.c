@@ -56,11 +56,12 @@ void	my_usleep(unsigned int time)
 {
 	struct timeval	start_time;
 	struct timeval	current_time;
+	long int		start_microsec;
 
 	gettimeofday(&start_time, NULL);
+	start_microsec = (start_time.tv_sec * 1000 + start_time.tv_usec / 1000) * 1000;
 	gettimeofday(&current_time, NULL);
-	while ((current_time.tv_sec - start_time.tv_sec) * 1000000 \
-		+ (long)(current_time.tv_usec - start_time.tv_usec) < time)
+	while (((current_time.tv_sec * 1000 + current_time.tv_usec / 1000) * 1000) - start_microsec < time)
 	{
 		usleep(50);
 		gettimeofday(&current_time, NULL);
