@@ -7,7 +7,8 @@ void	*observer(void *args)
 	state = (t_state *) args;
 	while (TRUE)
 	{
-		if (get_current_time(state) - state->philo[state->philo_pos].last_eat > state->philo_options.time_to_die)
+		if (get_current_time(state) - state->philo[state->philo_pos].last_eat \
+			> state->philo_options.time_to_die)
 		{
 			sem_wait(state->dead_philo_sem);
 			state->philo[state->philo_pos].state = IS_DEAD;

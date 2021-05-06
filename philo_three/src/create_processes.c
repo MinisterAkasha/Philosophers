@@ -2,8 +2,8 @@
 
 void	wait_processes(t_state *state)
 {
-	int i;
-	int status;
+	int	i;
+	int	status;
 
 	i = 0;
 	waitpid(0, &status, WUNTRACED);
@@ -27,7 +27,7 @@ int	create_processes(t_state *state)
 		state->philo[i].philo_pid = fork();
 		if (!state->philo[i].philo_pid)
 			philo_life_cycle(state);
-		if (state->philo[i].philo_pid < 0)//TODO add error
+		if (state->philo[i].philo_pid < 0)
 			return (1);
 		i++;
 	}
