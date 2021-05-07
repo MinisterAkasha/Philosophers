@@ -8,7 +8,7 @@ int	get_dead_philo_index(t_state *state)
 	while (i < state->philo_options.p_num)
 	{
 		if (get_current_time(state) - state->philo[i].last_eat \
-			> state->philo_options.time_to_die)
+			> state->philo_options.time_to_die && !state->eaten_philos[i])
 			return (i);
 		i++;
 	}
@@ -22,7 +22,7 @@ int	check_has_every_philo_eaten(t_state *state)
 	i = 0;
 	while (i < state->philo_options.p_num)
 	{
-		if (state->philo[i].eat_times != state->philo_options.times_need_eat)
+		if (state->eaten_philos[i] == FALSE)
 			return (0);
 		i++;
 	}
