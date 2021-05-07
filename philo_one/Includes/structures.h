@@ -54,6 +54,7 @@ typedef struct s_state {
 	int					philo_pos;
 
 	int					error_code;
+	int					*eaten_philos;
 }				t_state;
 
 #endif

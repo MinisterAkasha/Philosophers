@@ -13,6 +13,7 @@ void	free_forks(pthread_mutex_t *forks, int forks_num)
 void	free_everything(t_state *state)
 {
 	free_forks(state->forks, state->philo_options.p_num);
+	free(state->eaten_philos);
 	free(state->philo);
 	pthread_mutex_destroy(&state->message_mutex);
 	free(state);

@@ -20,8 +20,7 @@ int		init(t_state *state, char **argv);
 void	init_philos_options(t_philos_options *philo_options, char **argv);
 void	init_start_time(long *start_time);
 void	init_mutex(t_state *state, int forks_num, int *error);
-void	init_philosophers(t_philo_state **philo, int philo_num, \
-	int start_time, int *error);
+void	init_philosophers(t_philo_state **philo, int philo_num, int *error);
 void	init_str_message(char *str_message[5]);
 
 /*

@@ -42,7 +42,7 @@ TEXT_RESET = \033[0;0m
 all: $(OBJDIR) $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) -I$(INCLUDE) $(O_FILES) -o $@
+	@$(CC) $(FLAGS) -I$(INCLUDE) $(O_FILES) -o $@
 	@echo "$(GREEN)Success!"
 
 $(OBJDIR):
@@ -50,7 +50,7 @@ $(OBJDIR):
 
 %.o: %.c $(INCLUDE)
 	@echo "$(BLUE)Compiling $<"
-	@$(CC) -I$(INCLUDE) -c $< -o $(OBJDIR)/$@
+	@$(CC) $(FLAGS) -I$(INCLUDE) -c $< -o $(OBJDIR)/$@
 
 clean:
 	@echo "$(TEXT_RESET)"

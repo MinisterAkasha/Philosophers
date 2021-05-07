@@ -45,8 +45,7 @@ void	init_mutex(t_state *state, int forks_num, int *error)
 		*error = MUTEX_ERROR;
 }
 
-void	init_philosophers(t_philo_state **philo, int philo_num, \
-	int start_time, int *error)
+void	init_philosophers(t_philo_state **philo, int philo_num, int *error)
 {
 	int	i;
 
@@ -61,7 +60,6 @@ void	init_philosophers(t_philo_state **philo, int philo_num, \
 	{
 		(*philo)[i].position = i;
 		(*philo)[i].eat_times = 0;
-		(*philo)[i].last_eat = 0;
 		i++;
 	}
 }
