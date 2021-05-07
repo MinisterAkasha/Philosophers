@@ -43,8 +43,7 @@ void	init_start_time(long *start_time)
 	*start_time = tv.tv_sec * 1000 + (long)(tv.tv_usec / 1000);
 }
 
-void	init_philosophers(t_philo_state **philo, int philo_num, \
-	int start_time, int *error)
+void	init_philosophers(t_philo_state **philo, int philo_num, int *error)
 {
 	int	i;
 
@@ -59,7 +58,6 @@ void	init_philosophers(t_philo_state **philo, int philo_num, \
 	{
 		(*philo)[i].position = i;
 		(*philo)[i].eat_times = 0;
-		(*philo)[i].last_eat = 0;
 		i++;
 	}
 }

@@ -30,8 +30,7 @@ int		init(t_state *state, char **argv);
 void	init_philos_options(t_philos_options *philo_options, char **argv);
 void	init_semaphores(t_state *state, int *error);
 void	init_start_time(long *start_time);
-void	init_philosophers(t_philo_state **philo, int philo_num, \
-	int start_time, int *error);
+void	init_philosophers(t_philo_state **philo, int philo_num, int *error);
 void	init_str_message(char *str_message[5]);
 
 /*
@@ -53,7 +52,7 @@ int		create_processes(t_state *state);
 int		philo_life_cycle(t_state *state);
 int		get_philo_pos(t_state *state);
 void	get_forks_index(int pos, int philo_num, int (*forks)[2]);
-void	philo_put_forks(int pos, t_state *state);
+void	philo_put_forks(t_state *state);
 void	philo_take_forks(int pos, t_state *state);
 void	philo_eating(t_state *state, int pos);
 void	philo_sleeping(t_state *state, int pos);

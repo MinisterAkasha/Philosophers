@@ -6,6 +6,7 @@ int	philo_life_cycle(t_state *state)
 	pthread_t	philo_thread;
 
 	pos = state->philo_pos;
+	state->philo[pos].last_eat = get_current_time(state);
 	if (pthread_create(&philo_thread, NULL, observer, state) != 0)
 		return (2);
 	pthread_detach(philo_thread);

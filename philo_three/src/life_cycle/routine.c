@@ -1,6 +1,6 @@
 #include "philo_three.h"
 
-void	philo_put_forks(int pos, t_state *state)
+void	philo_put_forks(t_state *state)
 {
 	sem_post(state->forks_sem);
 	sem_post(state->forks_sem);
@@ -24,7 +24,7 @@ void	philo_eating(t_state *state, int pos)
 	state->philo[pos].last_eat = get_current_time(state);
 	state->philo[pos].eat_times++;
 	my_usleep(state->philo_options.time_to_eat * 1000);
-	philo_put_forks(pos, state);
+	philo_put_forks(state);
 }
 
 void	philo_sleeping(t_state *state, int pos)
