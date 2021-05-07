@@ -1,7 +1,7 @@
 #include "philo_one.h"
 #include "structures.h"
 
-void	ini_eaten_philos_arr(t_state *state, int philo_num, int *error)
+void	init_eaten_philos_arr(t_state *state, int philo_num, int *error)
 {
 	int	i;
 
