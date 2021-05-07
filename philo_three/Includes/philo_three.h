@@ -1,5 +1,5 @@
-#ifndef PHILO_TWO_H
-# define PHILO_TWO_H
+#ifndef PHILO_THREE_H
+# define PHILO_THREE_H
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -71,6 +71,6 @@ void	*observer(void *args);
 ** exit_erorr
 */
 
-void		exit_error(int error_code, t_state *state);
+void	exit_error(int error_code, t_state *state);
 
 #endif

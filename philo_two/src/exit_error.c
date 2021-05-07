@@ -1,6 +1,6 @@
 #include "philo_two.h"
 
-char *get_error_string(int error_code)
+char	*get_error_string(int error_code)
 {
 	if (error_code == MALLOC_ERROR)
 		return ("Malloc error\n");

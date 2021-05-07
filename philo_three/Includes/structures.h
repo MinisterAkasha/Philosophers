@@ -57,7 +57,7 @@ typedef struct s_state {
 
 	char				*str_message[5];
 	int					philo_pos;
-	
+
 	int					error_code;
 }				t_state;
 
