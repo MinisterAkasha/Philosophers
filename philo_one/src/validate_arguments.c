@@ -12,7 +12,7 @@ static int	check_for_non_numbers(char **argv)
 		j = 0;
 		while (argv[i][j])
 		{
-			if (!ft_isdigit(argv[i][j]))
+			if (!ft_isdigit(argv[i][j]) && argv[i][j] != '+')
 				return (1);
 			j++;
 		}
