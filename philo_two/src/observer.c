@@ -44,9 +44,10 @@ void	*observer(void *args)
 		dead_philo_index = get_dead_philo_index(state);
 		if (dead_philo_index != -1)
 		{
-			state->philo[dead_philo_index].state = IS_DEAD;
-			write_message(state, dead_philo_index);
 			sem_wait(state->message_sem);
+			state->philo[dead_philo_index].state = IS_DEAD;
+			printf("%ld %d %s", get_current_time(state), dead_philo_index, \
+			state->str_message[state->philo[dead_philo_index].state]);
 			return (NULL);
 		}
 	}
