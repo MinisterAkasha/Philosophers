@@ -7,14 +7,14 @@ void	wait_processes(t_state *state)
 
 	i = 0;
 	waitpid(0, &status, WUNTRACED);
-	if (status % 255 == 1)
+	if (status / 256 == 1)
 	{
 		while (i < state->philo_options.p_num)
 			kill(state->philo[i++].philo_pid, SIGKILL);
 	}
 	else if (!status)
 		wait_processes(state);
-	else if (status % 255 == 2)
+	else if (status / 256 == 2)
 		exit_error(THREAD_ERROR, state);
 }
 
